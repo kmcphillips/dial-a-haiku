@@ -1,0 +1,16 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8mb4
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: root<% if ENV['HOMEBREW_PREFIX'] %>
+  host: localhost<% else %>
+  password: root
+  socket: /var/run/mysqld/mysqld.sock<% end %>
+
+development:
+  <<: *default
+  database: dialahaiku_development
+
+test:
+  <<: *default
+  database: dialahaiku_test
