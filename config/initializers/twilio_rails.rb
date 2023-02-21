@@ -21,8 +21,8 @@ Twilio::Rails.setup do |config|
   # generators to create new phone trees and SMS responders, which will add the lines here to register them.
   #
   # See the README documentation for more information on how to define and register phone trees and SMS responders.
-  # config.phone_trees.register { MyPhoneTree }
-  # config.sms_responders.register { MySMSResponder }
+  config.phone_trees.register { HaikuTree }
+  config.sms_responders.register { HaikuResponder }
 
   # This is the host that will be used to generate URLs that the Twilio API will use to make requests to the
   # application. It defaults to what is defined in Rails `default_url_options` but can be overridden here. The format
@@ -75,5 +75,4 @@ Twilio::Rails.setup do |config|
   # adding convenience methods specific to the application. It can be called multiple times to add multiple modules.
   # Built in macros are defined in `Twilio::Rails::Phone::TreeMacros`.
   # config.include_phone_macros MyMacrosModule
-  config.phone_trees.register { HaikuTree }
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_11_032014) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_21_012500) do
   create_table "messages", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "sms_conversation_id", null: false
     t.string "sid"
@@ -81,6 +81,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_11_032014) do
     t.index ["recording_id"], name: "index_responses_on_recording_id"
     t.index ["timeout"], name: "index_responses_on_timeout"
     t.index ["transcribed"], name: "index_responses_on_transcribed"
+  end
+
+  create_table "sessions", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "session_id", null: false
+    t.text "data"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["session_id"], name: "index_sessions_on_session_id", unique: true
+    t.index ["updated_at"], name: "index_sessions_on_updated_at"
   end
 
   create_table "sms_conversations", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|

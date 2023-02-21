@@ -23,5 +23,9 @@ module DialAHaiku
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+
+    config.session_store :active_record_store, key: "_dial_a_haiku_session"
+    config.middleware.use ActionDispatch::Cookies
+    config.middleware.use config.session_store, config.session_options
   end
 end

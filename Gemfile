@@ -9,6 +9,7 @@ gem "puma", "~> 5.0"
 gem "redis"
 gem "sidekiq"
 gem "bootsnap", require: false
+gem "activerecord-session_store"
 gem "aws-sdk-s3"
 gem "ruby-openai", ">= 3.3.0", require: "openai"
 
