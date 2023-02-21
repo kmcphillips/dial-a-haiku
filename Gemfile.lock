@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/kmcphillips/twilio-rails.git
-  revision: 067cc7650acb20e01fe78e995189b0592b54546a
+  revision: 122612196a3965282c566935dde1e4ce6650d961
   branch: main
   specs:
     twilio-rails (0.1.0)
@@ -215,8 +215,8 @@ GEM
       rspec-mocks (~> 3.11)
       rspec-support (~> 3.11)
     rspec-support (3.12.0)
-    ruby-openai (3.0.3)
-      httparty (>= 0.18.1, < 0.22.0)
+    ruby-openai (3.3.0)
+      httparty (>= 0.18.1)
     ruby2_keywords (0.0.5)
     sidekiq (7.0.3)
       concurrent-ruby (< 2)
@@ -255,7 +255,7 @@ DEPENDENCIES
   rails (~> 7.0.4, >= 7.0.4.2)
   redis
   rspec-rails
-  ruby-openai
+  ruby-openai (>= 3.3.0)
   sidekiq
   sqlite3 (~> 1.4)
   twilio-rails!

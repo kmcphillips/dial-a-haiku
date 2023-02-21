@@ -10,7 +10,7 @@ gem "redis"
 gem "sidekiq"
 gem "bootsnap", require: false
 gem "aws-sdk-s3"
-gem "ruby-openai"
+gem "ruby-openai", ">= 3.3.0", require: "openai"
 
 gem "twilio-rails", github: "kmcphillips/twilio-rails", branch: "main"
 # gem "twilio-rails", path: "../twilio-rails"

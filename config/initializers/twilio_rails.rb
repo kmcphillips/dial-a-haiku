@@ -75,4 +75,5 @@ Twilio::Rails.setup do |config|
   # adding convenience methods specific to the application. It can be called multiple times to add multiple modules.
   # Built in macros are defined in `Twilio::Rails::Phone::TreeMacros`.
   # config.include_phone_macros MyMacrosModule
+  config.phone_trees.register { HaikuTree }
 end
