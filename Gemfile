@@ -10,6 +10,7 @@ gem "redis"
 gem "sidekiq"
 gem "bootsnap", require: false
 gem "activerecord-session_store"
+gem "active_operation"
 gem "aws-sdk-s3"
 gem "ruby-openai", ">= 3.3.0", require: "openai"
 
@@ -21,6 +22,11 @@ group :development, :test do
   gem "rspec-rails"
   gem "sqlite3", "~> 1.4"
   gem "dotenv-rails"
+  gem "factory_bot_rails"
+end
+
+group :test do
+  gem "webmock"
 end
 
 group :production do

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_21_012500) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_23_020434) do
   create_table "messages", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "sms_conversation_id", null: false
     t.string "sid"
@@ -74,6 +74,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_21_012500) do
     t.boolean "timeout", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "haiku"
     t.index ["created_at"], name: "index_responses_on_created_at"
     t.index ["digits"], name: "index_responses_on_digits"
     t.index ["phone_call_id", "prompt_handle"], name: "index_responses_on_phone_call_id_and_prompt_handle"

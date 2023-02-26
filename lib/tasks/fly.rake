@@ -22,7 +22,7 @@ namespace :fly do
   end
 
   task :sidekiq => :swapfile do
-    sh 'bundle exec sidekiq --environment production'
+    sh 'bundle exec sidekiq --environment production -q dial_a_haiku_production_default'
   end
 
   # optional SWAPFILE task:
