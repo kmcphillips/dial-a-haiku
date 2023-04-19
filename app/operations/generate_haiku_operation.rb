@@ -34,7 +34,10 @@ class GenerateHaikuOperation < ApplicationOperation
 
     if haiku_response.present?
       Rails.logger.warn("OpenAI returned invalid haikus after #{ ATTEMPTS } but we're going to use it anyway #{ haiku_response }") unless valid_looking_haiku?(haiku_response)
-      response.update(haiku: haiku_response)
+      response.update!(haiku: haiku_response)
+      InternalNotificationJob.perform_later(response_id: response.id)
+
+      response
     else
       raise "Could not get a valid haiku after #{ ATTEMPTS } attempts"
     end
