@@ -10,7 +10,7 @@ class InternalNotificationOperation < ApplicationOperation
           password: password,
         },
         body: {
-          message: "Dial-a-Haiku:\n*#{ response.haiku }*",
+          message: "📖 Dial-a-Haiku from **#{ Twilio::Rails::Formatter.display_phone_number(response.phone_call.from_number) }**:\n*#{ response.haiku }*",
         }
       )
     end
