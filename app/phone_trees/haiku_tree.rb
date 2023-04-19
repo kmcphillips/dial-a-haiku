@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 class HaikuTree < Twilio::Rails::Phone::BaseTree
-  voice "Polly.Joanna-Neural"
+  voice "Polly.Brian-Neural"
 
   final_timeout_message("You seem to be gone. I'm sorry to have lost you. Please call again soon.")
   invalid_phone_number("I'm sorry, but you must phone from a valid north american phone number. Goodbye.")
