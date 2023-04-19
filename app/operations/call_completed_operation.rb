@@ -9,7 +9,7 @@ class CallCompletedOperation < ApplicationOperation
       Twilio::Rails::SMS::SendOperation.call(
         phone_caller_id: phone_call.phone_caller.id,
         messages: haikus,
-        from_number: Twilio::Rails.config.default_outgoing_phone_number
+        from_number: phone_call.number
       )
     end
   end
