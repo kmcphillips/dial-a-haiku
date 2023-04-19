@@ -13,11 +13,13 @@ class HaikuTree < Twilio::Rails::Phone::BaseTree
 
   prompt :hello,
     message: ->(response) {
-      if response.phone_caller.inbound_calls_for(tree_name).count <= 1
+      text = if response.phone_caller.inbound_calls_for(tree_name).count <= 1
         "Hello! Thank you for calling Dial-a-Haiku."
       else
         "Hello again! Thank you for calling Dial-a-Haiku."
       end
+
+      macros.say_faster(text)
     },
     after: :gather_inspiration
 
@@ -26,7 +28,7 @@ class HaikuTree < Twilio::Rails::Phone::BaseTree
   # coupling to a callback. Ideally it would use an explicit event, or at the very least an observer, but neither are
   # supported by the `twilio-rails` framework... yet.
   prompt :gather_inspiration,
-    message: "I am listening to you. Please inspire me. Describe in a few words the topic of the haiku you would like to hear.",
+    message: macros.say_faster("I am listening to you. Please inspire me. Describe in a few words the topic of the haiku you would like to hear."),
     gather: {
       type: :speech,
       language: "en-US",
@@ -74,7 +76,7 @@ class HaikuTree < Twilio::Rails::Phone::BaseTree
     after: :prompt_again_or_goodbye
 
   prompt :prompt_again_or_goodbye,
-    message: "Would you like to hear another haiku?",
+    message: macros.say_faster("Would you like to hear another haiku?"),
     gather: {
       type: :speech,
       language: "en-US",
@@ -90,7 +92,7 @@ class HaikuTree < Twilio::Rails::Phone::BaseTree
         }
       else
         {
-          message: "Alright. You can call back anytime. I hope you enjoyed your haiku today. Goodbye.",
+          message: macros.say_faster("Alright. You can call back anytime. I hope you enjoyed your haiku today. Goodbye."),
           hangup: true,
         }
       end

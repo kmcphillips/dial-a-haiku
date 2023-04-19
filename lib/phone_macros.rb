@@ -9,4 +9,8 @@ module PhoneMacros
     return false if responses.count < count
     responses.all?{ |r| r.prompt_handle == prompt.to_s }
   end
+
+  def say_faster(text)
+    say { |s| s.prosody(words: text, rate: "120%") }
+  end
 end
