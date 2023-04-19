@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/kmcphillips/twilio-rails.git
-  revision: e2a4247d8bd1f2a32f4ce7357fb252a2b8779abf
+  revision: 560fe3793a2e0cd4cf7a934824e0db1e6999b7d0
   branch: main
   specs:
     twilio-rails (0.1.0)
@@ -292,4 +292,4 @@ RUBY VERSION
    ruby 3.2.0p0
 
 BUNDLED WITH
-   2.4.6
+   2.4.12

@@ -4,6 +4,9 @@ class HaikuTree < Twilio::Rails::Phone::BaseTree
 
   final_timeout_message("You seem to be gone. I'm sorry to have lost you. Please call again soon.")
   invalid_phone_number("I'm sorry, but you must phone from a valid north american phone number. Goodbye.")
+  finished_call ->(phone_call) {
+    CallCompletedJob.set(wait: 10.seconds).perform_later(phone_call_id: phone_call.id)
+  }
 
   greeting message: macros.play_public_file("chimes.wav"),
     prompt: :hello
