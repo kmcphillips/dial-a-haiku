@@ -1,8 +1,8 @@
 # Dial-a-Haiku
 
-Call **(249)444-2458**
+🇨🇦 In Canada call **(249)44-HAIKU** (That's **(249)444-2458**)
+🇺🇸 In the US call **(341)44-HAIKU** (That's **(341)444-2458**)
 
-That's **(249)44-HAIKU**
 
 ## What is this?
 
