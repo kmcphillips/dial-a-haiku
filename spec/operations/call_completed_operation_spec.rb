@@ -17,7 +17,7 @@ RSpec.describe CallCompletedOperation, type: :operation do
       expect(Twilio::Rails::SMS::SendOperation).to receive(:call).with(
         phone_caller_id: phone_call.phone_caller.id,
         messages: [ haiku ],
-        from_number: Twilio::Rails.config.default_outgoing_phone_number
+        from_number: phone_call.number
       )
       described_class.call(phone_call_id: phone_call.id)
     end

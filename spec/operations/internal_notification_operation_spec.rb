@@ -17,7 +17,7 @@ RSpec.describe InternalNotificationOperation, type: :operation do
       it "sends a notification if there is a haiku and auth set to ENV" do
         stub_request(:post, "http://example.com/notify").
           with(
-            body: "message=Dial-a-Haiku%3A%0A%2Athis%20is%20a%20test%20line%0Aand%20another%20testing%20line%0Afinish%20with%20a%20third%2A",
+            body: "message=%F0%9F%93%96%20Dial-a-Haiku%20from%20%2A%2A%28613%29%20555%201234%2A%2A%3A%0A%2Athis%20is%20a%20test%20line%0Aand%20another%20testing%20line%0Afinish%20with%20a%20third%2A",
             headers: {
               'Authorization'=>'Basic dGVzdF91c2VybmFtZTp0ZXN0X3Bhc3N3b3Jk',
             }
