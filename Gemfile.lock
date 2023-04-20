@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/kmcphillips/twilio-rails.git
-  revision: 560fe3793a2e0cd4cf7a934824e0db1e6999b7d0
+  revision: ef2ccc9eb050ab578dbd40410551be46c23fdf28
   branch: main
   specs:
     twilio-rails (0.1.0)
