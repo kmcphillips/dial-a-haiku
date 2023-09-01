@@ -11,6 +11,7 @@ gem "sidekiq"
 gem "bootsnap", require: false
 gem "activerecord-session_store"
 gem "active_operation"
+gem "faraday"
 gem "aws-sdk-s3"
 gem "ruby-openai", ">= 3.3.0", require: "openai"
 

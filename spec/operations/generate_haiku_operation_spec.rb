@@ -63,7 +63,7 @@ RSpec.describe GenerateHaikuOperation, type: :operation do
       invalid_response = {
         status: 500,
         headers: { 'Content-Type'=>'application/json' },
-        body: "ERROR"
+        body: "{\"error\": \"Server Error\"}"
       }
       stub_openai_requests(prompt: response.transcription, response: [ invalid_response, invalid_response, haiku ])
       GenerateHaikuOperation.call(response_id: response.id)

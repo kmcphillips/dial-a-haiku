@@ -24,7 +24,7 @@ class GenerateHaikuOperation < ApplicationOperation
         }
       )
 
-      if openai_response.success?
+      if !openai_response.key?("error")
         haiku_response = format_haiku(openai_response["choices"][0]["text"])
         break if valid_looking_haiku?(haiku_response)
       else

@@ -12,12 +12,13 @@ RSpec.describe InternalNotificationOperation, type: :operation do
         allow(ENV).to receive(:[]).with("INTERNAL_NOTIFICATION_URL").and_return("http://example.com/notify")
         allow(ENV).to receive(:[]).with("INTERNAL_NOTIFICATION_USERNAME").and_return("test_username")
         allow(ENV).to receive(:[]).with("INTERNAL_NOTIFICATION_PASSWORD").and_return("test_password")
+        allow(ENV).to receive(:[]).with("http_proxy").and_return("")
       end
 
       it "sends a notification if there is a haiku and auth set to ENV" do
         stub_request(:post, "http://example.com/notify").
           with(
-            body: "message=%F0%9F%93%96%20Dial-a-Haiku%20from%20%2A%2A%28613%29%20555%201234%2A%2A%3A%0A%2Athis%20is%20a%20test%20line%0Aand%20another%20testing%20line%0Afinish%20with%20a%20third%2A",
+            body: "message=%F0%9F%93%96+Dial-a-Haiku+from+**%28613%29+555+1234**%3A%0A*this+is+a+test+line%0Aand+another+testing+line%0Afinish+with+a+third*",
             headers: {
               'Authorization'=>'Basic dGVzdF91c2VybmFtZTp0ZXN0X3Bhc3N3b3Jk',
             }
@@ -28,7 +29,7 @@ RSpec.describe InternalNotificationOperation, type: :operation do
     end
 
     it "does not send a notification if there is no auth set to ENV" do
-      expect(HTTParty).to_not receive(:post)
+      expect_any_instance_of(Faraday::Connection).to_not receive(:post)
       described_class.call(response_id: response.id)
     end
   end

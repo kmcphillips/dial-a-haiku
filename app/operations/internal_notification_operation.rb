@@ -4,15 +4,10 @@ class InternalNotificationOperation < ApplicationOperation
 
   def execute
     if response.haiku.present? && url.present? && username.present? && password.present?
-      HTTParty.post(url,
-        basic_auth: {
-          username: username,
-          password: password,
-        },
-        body: {
-          message: "📖 Dial-a-Haiku from **#{ Twilio::Rails::Formatter.display_phone_number(response.phone_call.from_number) }**:\n*#{ response.haiku }*",
-        }
-      )
+      message = "📖 Dial-a-Haiku from **#{ Twilio::Rails::Formatter.display_phone_number(response.phone_call.from_number) }**:\n*#{ response.haiku }*"
+      Faraday.new do |conn|
+        conn.request(:authorization, :basic, username, password)
+      end.post(url, URI.encode_www_form(message: message))
     end
   end
 
