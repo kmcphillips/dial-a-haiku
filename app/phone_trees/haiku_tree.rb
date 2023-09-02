@@ -8,7 +8,7 @@ class HaikuTree < Twilio::Rails::Phone::BaseTree
     CallCompletedJob.set(wait: 10.seconds).perform_later(phone_call_id: phone_call.id)
   }
 
-  greeting message: macros.play_public_file("chimes.wav"),
+  greeting message: macros.play_public_file("short_chirp.mp3"),
     prompt: :hello
 
   prompt :hello,
@@ -53,8 +53,7 @@ class HaikuTree < Twilio::Rails::Phone::BaseTree
 
   prompt :thinking,
     message: [
-      macros.play_public_file("chimes_up.wav"),
-      macros.play_public_file("chimes_down.wav"),
+      macros.play_public_file("processing.mp3"),
     ],
     after: ->(response) {
       if macros.last_responses_all(response, prompt: :thinking, count: 3)
