@@ -92,7 +92,7 @@ class HaikuTree < Twilio::Rails::Phone::BaseTree
         }
       else
         {
-          message: macros.say_faster("Alright. You can call back anytime. I hope you enjoyed your haiku today. Goodbye."),
+          message: macros.say_faster("Alright. You can call back anytime. I hope you enjoyed our time together today. Goodbye."),
           hangup: true,
         }
       end
