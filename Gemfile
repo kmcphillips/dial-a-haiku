@@ -15,8 +15,7 @@ gem "faraday"
 gem "aws-sdk-s3"
 gem "ruby-openai", ">= 3.3.0", require: "openai"
 
-gem "twilio-rails", github: "kmcphillips/twilio-rails", branch: "main"
-# gem "twilio-rails", path: "../twilio-rails"
+gem "twilio-rails", "~> 1.0.0"
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
