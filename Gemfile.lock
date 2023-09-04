@@ -246,7 +246,7 @@ GEM
     stringio (3.0.8)
     thor (1.2.2)
     timeout (0.4.0)
-    twilio-rails (1.0.0)
+    twilio-rails (1.0.1)
       active_operation (>= 1.0)
       faraday
       rails (>= 7.0)
@@ -289,7 +289,7 @@ DEPENDENCIES
   ruby-openai (>= 3.3.0)
   sidekiq
   sqlite3 (~> 1.4)
-  twilio-rails (~> 1.0.0)
+  twilio-rails (~> 1.0.1)
   tzinfo-data
   webmock
 
