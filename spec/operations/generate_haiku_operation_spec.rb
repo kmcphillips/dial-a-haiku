@@ -9,7 +9,7 @@ RSpec.describe GenerateHaikuOperation, type: :operation do
   def stub_openai_requests(prompt:, response:)
     stub_request(:post, "https://api.openai.com/v1/completions").
       with(
-        body: "{\"prompt\":\"Write a haiku about #{ prompt }\",\"model\":\"text-davinci-003\",\"max_tokens\":80,\"temperature\":0.8,\"top_p\":1.0,\"frequency_penalty\":0.6,\"presence_penalty\":0.1}",
+        body: "{\"prompt\":\"Write a haiku about #{ prompt }\",\"model\":\"gpt-3.5-turbo-instruct\",\"max_tokens\":80,\"temperature\":0.8,\"top_p\":1.0,\"frequency_penalty\":0.6,\"presence_penalty\":0.1}",
         headers: {
           'Accept'=>'*/*',
           'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',

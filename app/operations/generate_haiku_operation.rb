@@ -15,7 +15,7 @@ class GenerateHaikuOperation < ApplicationOperation
       openai_response = openai_client.completions(
         parameters: {
           prompt: prompt,
-          model: "text-davinci-003",
+          model: "gpt-3.5-turbo-instruct",
           max_tokens: 80,
           temperature: 0.8,
           top_p: 1.0,
