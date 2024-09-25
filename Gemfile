@@ -13,7 +13,7 @@ gem "activerecord-session_store"
 gem "active_operation"
 gem "faraday"
 gem "aws-sdk-s3"
-gem "ruby-openai", ">= 3.3.0", require: "openai"
+gem "ruby-openai"
 
 gem "twilio-rails", "~> 1.0.1"
 

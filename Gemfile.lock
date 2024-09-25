@@ -115,17 +115,20 @@ GEM
       dotenv (= 2.8.1)
       railties (>= 3.2)
     erubi (1.12.0)
+    event_stream_parser (1.0.0)
     factory_bot (6.2.1)
       activesupport (>= 5.0.0)
     factory_bot_rails (6.2.0)
       factory_bot (~> 6.2.0)
       railties (>= 5.0.0)
-    faraday (2.7.10)
-      faraday-net_http (>= 2.0, < 3.1)
-      ruby2_keywords (>= 0.0.4)
+    faraday (2.12.0)
+      faraday-net_http (>= 2.0, < 3.4)
+      json
+      logger
     faraday-multipart (1.0.4)
       multipart-post (~> 2)
-    faraday-net_http (3.0.2)
+    faraday-net_http (3.3.0)
+      net-http
     globalid (1.1.0)
       activesupport (>= 5.0)
     hashdiff (1.0.1)
@@ -136,7 +139,9 @@ GEM
       rdoc (~> 6.5)
       reline (>= 0.3.6)
     jmespath (1.6.2)
+    json (2.7.2)
     jwt (2.7.1)
+    logger (1.6.1)
     loofah (2.21.3)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
@@ -151,8 +156,10 @@ GEM
     minitest (5.19.0)
     msgpack (1.7.2)
     multi_json (1.15.0)
-    multipart-post (2.3.0)
+    multipart-post (2.4.1)
     mysql2 (0.5.5)
+    net-http (0.4.1)
+      uri
     net-imap (0.3.7)
       date
       net-protocol
@@ -231,10 +238,10 @@ GEM
       rspec-mocks (~> 3.12)
       rspec-support (~> 3.12)
     rspec-support (3.12.1)
-    ruby-openai (5.1.0)
+    ruby-openai (7.1.0)
+      event_stream_parser (>= 0.3.0, < 2.0.0)
       faraday (>= 1)
       faraday-multipart (>= 1)
-    ruby2_keywords (0.0.5)
     sidekiq (7.1.2)
       concurrent-ruby (< 2)
       connection_pool (>= 2.3.0)
@@ -257,6 +264,7 @@ GEM
       nokogiri (>= 1.6, < 2.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
+    uri (0.13.1)
     webmock (3.19.1)
       addressable (>= 2.8.0)
       crack (>= 0.3.2)
@@ -269,6 +277,7 @@ GEM
 PLATFORMS
   arm64-darwin-21
   arm64-darwin-22
+  arm64-darwin-23
   x86_64-linux
 
 DEPENDENCIES
@@ -286,7 +295,7 @@ DEPENDENCIES
   rails (~> 7.0.4, >= 7.0.4.2)
   redis
   rspec-rails
-  ruby-openai (>= 3.3.0)
+  ruby-openai
   sidekiq
   sqlite3 (~> 1.4)
   twilio-rails (~> 1.0.1)

@@ -12,20 +12,19 @@ class GenerateHaikuOperation < ApplicationOperation
     haiku_response = nil
 
     ATTEMPTS.times do
-      openai_response = openai_client.completions(
+      openai_response = openai_client.chat(
         parameters: {
-          prompt: prompt,
-          model: "gpt-3.5-turbo-instruct",
+          messages: [
+            { role: "user", content: prompt }
+          ],
+          model: "gpt-4o",
+          temperature: 0.7,
           max_tokens: 80,
-          temperature: 0.8,
-          top_p: 1.0,
-          frequency_penalty: 0.6,
-          presence_penalty: 0.1,
         }
       )
 
       if !openai_response.key?("error")
-        haiku_response = format_haiku(openai_response["choices"][0]["text"])
+        haiku_response = format_haiku(openai_response["choices"][0]["message"]["content"])
         break if valid_looking_haiku?(haiku_response)
       else
         Rails.logger.error("OpenAI request was not successful #{ openai_response }")
