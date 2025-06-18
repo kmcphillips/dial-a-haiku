@@ -175,7 +175,6 @@ GEM
     multi_json (1.15.0)
     multipart-post (2.4.1)
     mutex_m (0.3.0)
-    mysql2 (0.5.5)
     net-http (0.4.1)
       uri
     net-imap (0.5.8)
@@ -327,7 +326,6 @@ DEPENDENCIES
   fiddle
   irb
   mutex_m
-  mysql2 (~> 0.5.5)
   observer
   ostruct
   puma (~> 5.0)

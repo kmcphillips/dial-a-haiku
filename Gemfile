@@ -5,7 +5,6 @@ ruby "3.4.4"
 
 gem "rails", "~> 7.1.0"
 gem "trilogy"
-gem "mysql2", "~> 0.5.5"
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "puma", "~> 5.0"
 gem "redis"
