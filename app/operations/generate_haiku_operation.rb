@@ -12,22 +12,26 @@ class GenerateHaikuOperation < ApplicationOperation
     haiku_response = nil
 
     ATTEMPTS.times do
-      openai_response = openai_client.chat(
-        parameters: {
-          messages: [
-            { role: "user", content: prompt }
-          ],
-          model: "gpt-4o",
-          temperature: 0.7,
-          max_tokens: 80,
-        }
-      )
+      begin
+        openai_response = openai_client.chat(
+          parameters: {
+            messages: [
+              { role: "user", content: prompt }
+            ],
+            model: "gpt-4o",
+            temperature: 0.7,
+            max_tokens: 80,
+          }
+        )
 
-      if !openai_response.key?("error")
-        haiku_response = format_haiku(openai_response["choices"][0]["message"]["content"])
-        break if valid_looking_haiku?(haiku_response)
-      else
-        Rails.logger.error("OpenAI request was not successful #{ openai_response }")
+        if !openai_response.key?("error")
+          haiku_response = format_haiku(openai_response["choices"][0]["message"]["content"])
+          break if valid_looking_haiku?(haiku_response)
+        else
+          Rails.logger.error("OpenAI request was not successful #{ openai_response }")
+        end
+      rescue Faraday::ServerError => e 
+        Rails.logger.error("OpenAI request errored #{ openai_response }")
       end
     end
 

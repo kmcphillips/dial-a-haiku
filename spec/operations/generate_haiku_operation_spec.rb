@@ -7,9 +7,9 @@ RSpec.describe GenerateHaikuOperation, type: :operation do
   let(:haiku) { "this is a test line\nand another testing line\nfinish with a third" }
 
   def stub_openai_requests(prompt:, response:)
-    stub_request(:post, "https://api.openai.com/v1/completions").
+    stub_request(:post, "https://api.openai.com/v1/chat/completions").
       with(
-        body: "{\"prompt\":\"Write a haiku about #{ prompt }\",\"model\":\"gpt-3.5-turbo-instruct\",\"max_tokens\":80,\"temperature\":0.8,\"top_p\":1.0,\"frequency_penalty\":0.6,\"presence_penalty\":0.1}",
+        body: "{\"messages\":[{\"role\":\"user\",\"content\":\"Write a haiku about #{prompt}\"}],\"model\":\"gpt-4o\",\"temperature\":0.7,\"max_tokens\":80}",
         headers: {
           'Accept'=>'*/*',
           'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
@@ -25,7 +25,7 @@ RSpec.describe GenerateHaikuOperation, type: :operation do
             {
               status: 200,
               headers: { 'Content-Type'=>'application/json' },
-              body: { choices: [ { text: r } ] }.to_json
+              body: { choices: [ { message: { content: r } } ] }.to_json
             }
           else
             raise "Invalid response type: #{ r.class }"
