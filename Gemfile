@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "3.4.4"
 
 gem "rails", "~> 7.1.0"
-gem "trilogy"
+gem "trilogy", ">= 2.13.2"
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "puma", ">= 6.0"
 gem "redis"
